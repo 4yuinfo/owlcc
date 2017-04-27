@@ -30,18 +30,16 @@ function reload_owllccc(search) {
     $('#owllccc').load('owl-life-camp.html', function () {
         oldata = $('#owl-life-search-store').val();
         search = $('#owl-life-search-text').val();
-        if (oldata != search) {
-            if (search.length > 0) {
-                $('.campblock').each(function () {
-                    if ($(this).context.innerText.search(search) < 0) {
-                        $(this).remove();
-                    }
-                });
-            }
-            pageTotal = $('.campblock').size();
-            initPagination(pageTotal);
-            $('#owl-life-search-store').val(search);
+        if (search.length > 0) {
+            $('.campblock').each(function () {
+                if ($(this).context.innerText.search(search) < 0) {
+                    $(this).remove();
+                }
+            });
         }
+        pageTotal = $('.campblock').size();
+        initPagination(pageTotal);
+        $('#owl-life-search-store').val(search);
     });
     waitingDialog.hide();
 }
